@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel - SAHIL HACKZ</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Admin Panel</h1>
+  <button onclick="saveChanges()">💾 Save Changes</button>
+  <button onclick="resetChanges()">🔄 Reset to Default</button>
+  <iframe id="preview" src="index.html"></iframe>
+
+  <script>
+    function saveChanges() {
+      const iframe = document.getElementById('preview');
+      const doc = iframe.contentDocument || iframe.contentWindow.document;
+      localStorage.setItem('custom_homepage', doc.body.innerHTML);
+      alert('Changes saved!');
+    }
+
+    function resetChanges() {
+      localStorage.removeItem('custom_homepage');
+      document.getElementById('preview').src = 'index.html';
+      alert('Reset to default!');
+    }
+  </script>
+</body>
+</html>
